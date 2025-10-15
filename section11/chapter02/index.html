@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <script>
+      try {
+        const themeStore = localStorage.getItem("ThemeStore")
+          ? JSON.parse(localStorage.getItem("ThemeStore"))
+          : null;
+
+        const theme = themeStore.state.theme;
+
+        const htmlTag = document.documentElement;
+        htmlTag.classList.remove("dark", "light");
+
+        if (theme === "system") {
+          const isDarkTheme = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+
+          htmlTag.classList.add(isDarkTheme ? "dark" : "light");
+        } else {
+          htmlTag.classList.add(theme);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="modal-root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
