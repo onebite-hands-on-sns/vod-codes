@@ -1,0 +1,11 @@
+.test {
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.text-white {
+  color: white;
+}
